@@ -1,0 +1,68 @@
+name: '🐛 Report Bug'
+title: '[Bug]'
+description: Submitting a report helps us improve。
+labels: [ 'bug' ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report the issue！Please explain your issue accurately。If possible，Please provide a reproducible snippet（This helps resolve the issue faster）。
+  - type: textarea
+    attributes:
+      label: What happened
+      description: Describe the exception you encountered
+      placeholder: >
+        A clear and specific description of the exception
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: How to reproduce？
+      description: >
+        Steps to reproduce the issue
+      placeholder: >
+        such as: 1. Open '...'
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: AstrBot Version、Deployment method（such as Windows Docker Desktop Deployment）、Message platform adapter used、MilvusDeployment method、mnemosynePlugin version
+      description: >
+        Please provide your AstrBot Version andmnemosynePlugin version。
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Operating system
+      description: |
+        On which operating system did you encounter this issue？
+      multiple: false
+      options:
+        - 'Windows'
+        - 'macOS'
+        - 'Linux'
+        - 'Other'
+        - 'Not sure'
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Error log
+      description: >
+        Such as error logs、Screenshots, etc.。Please provide the complete Debug Level logs！
+      placeholder: >
+        Please provide the complete error log or screenshot。
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Are you willing to submit PR ?？
+      description: >
+        This is not required，But we are happy to guide you through the contribution process, especially if you have a good understanding of how to implement the fix。
+      options:
+        - label: Yes，I am willing to submit PR!

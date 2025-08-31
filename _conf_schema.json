@@ -1,0 +1,135 @@
+{
+    "LLM_providers":{
+        "description":"Memory summary usageLLMService providerID",
+        "type":"string"
+    },
+    "milvus_lite_path":{
+        "description":"milvusDatabaseliteMode path",
+        "type":"string",
+        "hint":"Note！！！Only usemilvus_lite_pathOraddressOnly one is needed，milvus_lite_pathHigher priority",
+        "obvious_hint":true,
+        "default":""
+    },
+    "address":{
+        "description":"milvusDatabase address",
+        "type":"string",
+        "hint":"Supported formats such as:http://localhost:19530，https://localhost:19530，localhost:19530",
+        "obvious_hint":true,
+        "default":""
+    },
+    "authentication":{
+        "description":"milvusDatabase authentication information",
+        "type":"object",
+        "hint":"IfmilvusServer authentication is enabled，Please fill in the corresponding information",
+        "obvious_hint":true,
+        "items":{
+            "token":{
+                "description":"milvusDatabase authenticationtoken",
+                "type":"string",
+                "hint":"tokenTakes precedence over account password",
+                "obvious_hint":true
+            },
+            "user":{
+                "description":"milvusDatabase authentication username",
+                "type":"string"
+            },
+            "password":{
+                "description":"milvusDatabase authentication password",
+                "type":"string"
+            }
+        }
+    },
+    "summary_check_task":{
+        "description":"Automatic summary timer settings",
+        "type":"object",
+        "hint":"Experimental feature，When not speaking for a long timebotWhen speaking，Will perform message summary",
+        "obvious_hint":true,
+        "items":{
+            "SUMMARY_CHECK_INTERVAL_SECONDS":{
+                "description":"Timer interval time（Seconds）",
+                "type":"int",
+                "hint":"Default every60Seconds（1Minutes）Check once，If the threshold is set to1Hours，Set to10Minutes should be fine",
+                "obvious_hint":true,
+                "default":60
+            },
+            "SUMMARY_TIME_THRESHOLD_SECONDS":{
+                "description":"Timer summary threshold（Seconds）",
+                "type":"int",
+                "hint":"Default is3600Seconds（1Hours），Set to-1Disable this feature，Everyone withBOTHas different chat frequency，Set according to personal needs",
+                "obvious_hint":true,
+                "default":-1
+            }
+        }
+    },
+    "collection_name":{
+        "description":"Vector database collection name",
+        "type":"string",
+        "hint":"Which collection in the vector database stores long-term memory,Please use English naming",
+        "obvious_hint":true,
+        "default":"default"
+    },
+    "use_personality_filtering":{
+        "description":"Whether to use personality filtering during memory query",
+        "type":"bool",
+        "default":true
+    },
+    "num_pairs":{
+        "description":"Dialogue length for memory summary",
+        "type":"int",
+        "hint":"Q&A length is2，Memory summary will be performed when dialogue length reaches this threshold",
+        "obvious_hint":false,
+        "default":10
+    },
+    "embedding_service": {
+        "description": "Select embedding service provider (openai or gemini)",
+        "type": "string",
+        "options": ["openai", "gemini"],
+        "default": "openai"
+    },
+    "embedding_key":{
+        "description":"embeddingModel serviceapikey",
+        "type":"string",
+        "obvious_hint":false
+    },
+    "embedding_url":{
+        "description":"embeddingModel service endpointurl",
+        "type":"string",
+        "hint":"Currently only forOpenAICompatible interface，Fill inV1That's it。If selectedGemini，Then do not fill in",
+        "obvious_hint":true
+    },
+    "embedding_model":{
+        "description":"embeddingModel name",
+        "type":"string"
+    },
+    "embedding_dim":{
+        "description":"Dimension of vector model output",
+        "type":"int",
+        "hint":"Note！It's best not to change this dimension size arbitrarily，If you must change the vector dimension，Please modifycollection_name。GeminiModify to3072",
+        "obvious_hint":true,
+        "default":1024
+    },
+    "top_k":{
+        "description":"Number of returned long-term memories",
+        "type":"int",
+        "default":3
+    },
+    "contexts_memory_len": {
+        "description":"Number of long-term memories retained in historical context",
+        "type":"int",
+        "hint":"Less than0Indicates full retention，Greater than or equal to0Indicates retaining the latest corresponding entries",
+        "obvious_hint":true,
+        "default":0
+    },
+    "memory_injection_method":{
+        "description":"Memory insertion method",
+        "type":"string",
+        "hint":"user_prompt Will be embedded at the beginning of the user message，system_promptWill be embedded in the system message，insert_system_promptWill add a new system message to the context list",
+        "options": ["user_prompt", "system_prompt", "insert_system_prompt"],
+        "default": "user_prompt"
+    },
+    "long_memory_prompt":{
+        "description":"Dialogue summary prompt",
+        "type":"string",
+        "default":"Please generate a coherent summary text based on the following dialogue content，Requirements：1. Use single-paragraph natural language expression，Without numbering or bullet points；2. Focus on extracting core elements，Including but not limited to participant identity（Name/Role）、Core events、Key time nodes、Special needs、Controversy points and solutions；3. Retain involved amounts/Quantity/Specifications and other quantitative information；4.Do not output extra explanatory content；5. Integrate information using concise written language，Ensure information is complete and accurate。Note：Avoid adding explanatory content，Only objectively present the integrated results of dialogue elements。6.InAIRecord information from the first-person perspective"
+    }
+}

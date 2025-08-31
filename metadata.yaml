@@ -1,0 +1,6 @@
+name: astrbot_plugin_mnemosyne
+desc: based onMilvuslong-term memory storage and query plugin for databases
+help: input /memory view command help
+version: v0.5.1
+author: lxfight
+repo: https://github.com/lxfight/astrbot_plugin_mnemosyne

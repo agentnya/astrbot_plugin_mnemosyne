@@ -1,0 +1,63 @@
+name: '✨ Submit a new feature suggestion'
+title: '[Feature Request]'
+description: Submit the new feature you wish to see，Help us optimize the product。
+labels: [ 'enhancement' ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature！Please describe your needs in detail，This will help us better understand your use case。
+
+  - type: textarea
+    attributes:
+      label: Feature description
+      description: Briefly describe the new feature you wish to add
+      placeholder: >
+        For example："Hope to add a dashboard for real-time user interaction data statistics"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Motivation and background of the need
+      description: Explain why this feature is needed and what problem it can solve
+      placeholder: >
+        For example："Currently need to manually export data to analyze user behavior，Hope to automate the generation of visual reports"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Use case or example
+      description: Describe possible use cases or specific usage scenarios for this feature
+    validations:
+      required: true
+
+  - type: dropdown
+    attributes:
+      label: Priority suggestion
+      description: What do you think is the priority of this feature？
+      multiple: false
+      options:
+        - 'High priority（Directly affects core functionality）'
+        - 'Medium priority（Enhances user experience）'
+        - 'Low priority（Optimization requirement）'
+    validations:
+      required: true
+
+  - type: checkboxes
+    attributes:
+      label: Willing to participate in development？
+      description: |
+        If you have technical ability，You can choose to participate in development。We will provide necessary guidance and documentation support。
+      options:
+        - label: Yes，I am willing to assist in development！
+        - label: I can provide detailed usage feedback
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        **Note**：If you have specific implementation plans or technical suggestions，You can add explanations below。  
+        We will evaluate based on the urgency of the need and technical feasibility，Thank you for your contribution！
